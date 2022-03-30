@@ -1,80 +1,96 @@
 <template>
-<div>
-  <v-container class="my-5">
-      <v-card flat v-for="project in projects" :key="project.title">
-        <v-layout row wrap :class="`pa-3 project ${project.content}`">
-          <v-col xs="12" md="6">
-            <div class="caption grey--text">PROJECT TITLE</div>
-            <div>{{project.title}}</div>
-          </v-col>
-          <v-col xs="6" sm="4" md="2">
-            <div class="caption grey--text">PERSON</div>
-            <div>{{project.Person}}</div>
-          </v-col>
-          <v-col xs="6" sm="4" md="2">
-            <div class="caption grey--text"> DATE</div>
-            <div>{{project.date}}</div>
-          </v-col>
-          <v-col xs="2" sm="4" md="2">
-            <div>
-             <v-chip small :class="`${project.content} white--text caption my-2`">{{project.content}}</v-chip> 
-             </div>
-          </v-col>
-        </v-layout>
-        <v-divider></v-divider>
-      </v-card>
-    </v-container>
-    
-   
   
 
-</div>
+     <side-bar />
+     
+        <v-card
+      style=" background: linear-gradient(87deg,#2dce89,#2dcecc)!important; margin-top:90px"
+      height="500px"
+      tile
+      flat
+      
+      class="d-flex align-center  "
+      
+    >
+      <v-row>
+        <v-col cols="12" xs="12" sm="6" md="4" lg="3" v-for="stat in Statistics" :key="stat.title">
+           <v-card
+    class="mx-auto"
+    max-width="250"
+    max-height="300"
+    outlined
+  >
+    <v-list-item three-line>
+      <v-list-item-content>
+        <div class="text-overline mb-4">
+          {{stat.title}}
+        </div>
+        <v-icon>{{stat.icon}}</v-icon>
+        <v-list-item-subtitle>Greyhound divisely hello coldly fonwderfully</v-list-item-subtitle>
+      </v-list-item-content>
+
+    </v-list-item>
+
+ 
+  </v-card>
+        </v-col>
+      
+      </v-row>
+    </v-card>
+      <v-card tile class="mx-16 mt-n10 card1" color="white">
+       <v-row>
+         <v-col cols="12" md="12" >
+             <table class="table" style="margin-top:30px; ">
+              <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">First</th>
+                  <th scope="col">Last</th>
+                  <th scope="col">Handle</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">1</th>
+                  <td>Mark</td>
+                  <td>Otto</td>
+                  <td>@mdo</td>
+                </tr>
+                <tr>
+                  <th scope="row">2</th>
+                  <td>Jacob</td>
+                  <td>Thornton</td>
+                  <td>@fat</td>
+                </tr>
+                <tr>
+                  <th scope="row">3</th>
+                  <td colspan="2">Larry the Bird</td>
+                  <td>@twitter</td>
+                </tr>
+              </tbody>
+            </table>
+                    </v-col>
+                            </v-row>
+                            </v-card>
+              
+  
 </template>
 
 <script>
-import { defineComponent } from 'vue';
+import SideBar from "@/components/SideBar.vue";
 
-// Components
-
-
-export default defineComponent({
-  name: 'HomeView',
-
-data(){
-       return{ 
-         projects: [
-        { title: 'Project1', Person: 'Nabil' , date:'16/03/2022' , content:' complete'},
-        { title: 'Project2', Person: 'Ayoub' ,  date:'16/03/2022' ,content:' enCours'},
-       { title: 'Project2', Person: 'Ayoub' ,  date:'16/03/2022' ,content:' finit '},
-       { title: 'Project2', Person: 'Ayoub' ,  date:'16/03/2022' ,content:'  complete'},
-
-      ],
-      
-       }
+export default {
+    
+    data() {
+      return  {
+         Statistics:[
+           {icon:'mdi-chart-areaspline',title:'Total User',text:''},
+            {icon:'mdi-chart-bar-stacked',title:'Total Coach',text:''},
+             {icon:'mdi-chart-bell-curve',title:'Total Product',text:''},
+              {icon:'mdi-chart-bell-curve',title:'Total Product',text:''}
+         ]
+      }
+    },
+    components: { SideBar }
 }
-});
 </script>
-
-<style>
-
-.project.complete{
-  border-left: 4px solid #3cd1c2;
-}
-.project.enCours{
-  border-left: 4px solid orange;
-}
-.project.finit{
-  border-left: 4px solid tomato;
-}
-.v-chip.complete{
-  border-left: 4px solid #3cd1c2;
-}
-.v-chip.enCours{
-  border-left: 4px solid orange;
-}
-.v-chip.finit{
-  border-left: 4px solid tomato;
-}
-</style>
-
-

@@ -1,4 +1,5 @@
 <template>
+<navbar-view />
 <div>
   <v-container class="my-5">
       <v-card flat v-for="project in projects" :key="project.title">
@@ -36,9 +37,12 @@ import { defineComponent } from 'vue';
 
 // Components
 
-
+import NavbarView from '@/components/NavbarView.vue';
 export default defineComponent({
   name: 'HomeView',
+  components:{
+    NavbarView
+  },
 
 data(){
        return{ 

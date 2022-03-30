@@ -1,4 +1,5 @@
 <template>
+<navbar-view />
     <div class="slide">
           <v-container >
     <v-row class="r1">
@@ -236,44 +237,40 @@
 </template>
 
 <script>
+import NavbarView from "@/components/NavbarView.vue"
 
 
 export default {
-    
-    data(){
- 
-       return{
-        
-        cycle: false,
-        slides: [
-         {  nom:'test', reviews:'lorem ipsum'},
-           { nom:'test', reviews:'lorem ipsum'},
-             { nom:'test', reviews:'lorem ipsum'},
-        ],
-           
-      abouts:[
-        {icon:'mdi-calendar-check',title:'Abonnements flexibles',text:'5 ou 6 jours par semaine ? Un dîner imprévu ? Un voyage ? Pas de panique possibilité de suspendre votre abonnement.'},
-        {icon:'mdi-chef-hat',title:'Repas équilibrés et variés',text:'Tous nos repas respectent des proportions nutritives nécessaires à votre corps dans des menus qui changent chaque semaine.'},
-        {icon:'mdi-gesture-double-tap', title:'Respectant votre objectif',text:'Prise de masse, Perte de poids, Sèche Musculaire possibilité de jeûne intermittent.'},
-        {icon:'mdi-nutrition', title:'Accompagnement nutritionnel',text:'Bilan personnalisé et suivi régulier chez notre nutritionniste.'},
-        {icon:'mdi-dumbbell',title:'Programme et coaching sportif',text:'Personnalisé et adapté à tous les niveaux'}
-      ],
-         Offers:[
-        {icon:'mdi-check-underline' ,title:'Motivate', des:'Vos calories à travers un diagnostic personnalisé'},
-        {icon:'mdi-amplifier' ,title:'Workout', des:'Recevez vos repas chez vous tous les soirs.'},
-            { icon:'mdi-dumbbell' ,title:'Objectif', des: 'Atteignez vos objectifs et profitez de votre temps'},
-        {icon:'mdi-cart-outline' ,title:'Results', des:'Recevez vos repas chez vous tous les soirs.'},
-     
-      ],
-     
-      Blog:[
-        {img:'https://images.pexels.com/photos/5039523/pexels-photo-5039523.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500', title:' GYM / NUTRITION' , text:'Few benefits of group and  personal training'},
-        {img:'https://images.pexels.com/photos/1769626/pexels-photo-1769626.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500', title:' Exercices / NUTRITION' , text:'Top 5 benefits of outdoor  personal training'},
-        {img:'https://images.pexels.com/photos/416809/pexels-photo-416809.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940', title:' GYM / WORKOUT' , text:'How long does it take to get your fitness back?'}
-      ]
-       }
-        }
-    }
+    data() {
+        return {
+            cycle: false,
+            slides: [
+                { nom: "test", reviews: "lorem ipsum" },
+                { nom: "test", reviews: "lorem ipsum" },
+                { nom: "test", reviews: "lorem ipsum" },
+            ],
+            abouts: [
+                { icon: "mdi-calendar-check", title: "Abonnements flexibles", text: "5 ou 6 jours par semaine ? Un dîner imprévu ? Un voyage ? Pas de panique possibilité de suspendre votre abonnement." },
+                { icon: "mdi-chef-hat", title: "Repas équilibrés et variés", text: "Tous nos repas respectent des proportions nutritives nécessaires à votre corps dans des menus qui changent chaque semaine." },
+                { icon: "mdi-gesture-double-tap", title: "Respectant votre objectif", text: "Prise de masse, Perte de poids, Sèche Musculaire possibilité de jeûne intermittent." },
+                { icon: "mdi-nutrition", title: "Accompagnement nutritionnel", text: "Bilan personnalisé et suivi régulier chez notre nutritionniste." },
+                { icon: "mdi-dumbbell", title: "Programme et coaching sportif", text: "Personnalisé et adapté à tous les niveaux" }
+            ],
+            Offers: [
+                { icon: "mdi-check-underline", title: "Motivate", des: "Vos calories à travers un diagnostic personnalisé" },
+                { icon: "mdi-amplifier", title: "Workout", des: "Recevez vos repas chez vous tous les soirs." },
+                { icon: "mdi-dumbbell", title: "Objectif", des: "Atteignez vos objectifs et profitez de votre temps" },
+                { icon: "mdi-cart-outline", title: "Results", des: "Recevez vos repas chez vous tous les soirs." },
+            ],
+            Blog: [
+                { img: "https://images.pexels.com/photos/5039523/pexels-photo-5039523.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500", title: " GYM / NUTRITION", text: "Few benefits of group and  personal training" },
+                { img: "https://images.pexels.com/photos/1769626/pexels-photo-1769626.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500", title: " Exercices / NUTRITION", text: "Top 5 benefits of outdoor  personal training" },
+                { img: "https://images.pexels.com/photos/416809/pexels-photo-416809.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940", title: " GYM / WORKOUT", text: "How long does it take to get your fitness back?" }
+            ]
+        };
+    },
+    components: { NavbarView }
+}
 
 </script>
 
@@ -328,7 +325,7 @@ html{
  
 }
 .best{
-    background: linear-gradient(-135deg, yellow, grey);
+    background: linear-gradient(-135deg, rgb(70, 70, 247), rgb(136, 179, 115));
 }
 .left {
   width: 150%;
@@ -495,7 +492,7 @@ p{
 
   transform-style: preserve-3d;
   backface-visibility: hidden;
-  background: linear-gradient(-135deg, black, grey);
+  background: linear-gradient(-135deg, rgb(120, 137, 248), rgb(90, 238, 199));
   transform: translateY(110px) rotateX(-90deg);
   box-shadow: 0px 5px 20px 0px rgba(0, 81, 250, 0.1);
   transition: all 0.5s ease;

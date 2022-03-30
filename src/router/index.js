@@ -10,6 +10,9 @@ import CoachView from '@/views/CoachView.vue'
 import SignIn from '@/views/SignIn.vue'
 import UserView from '@/views/UserView'
 import AddCoach from '@/views/AddCoach'
+import SideBar from '@/components/SideBar.vue'
+import DashbordView from '@/views/Admin/DashbordView.vue'
+import GestionUser from '@/views/Admin/GestionUser'
 
 
 const routes = [
@@ -51,7 +54,7 @@ const routes = [
     path: '/BoutiqueView',
     name: 'BoutiqueView',
     component:BoutiqueView,
-    meta: { secure: true }
+   // meta: { secure: true }
     
   },
   {
@@ -83,6 +86,24 @@ const routes = [
     path: '/AddCoach',
     name: 'AddCoach',
     component:AddCoach
+    
+  },
+   {
+    path: '/SideBar',
+    name: 'SideBar',
+    component:SideBar
+    
+  },
+  {
+    path: '/DashbordView',
+    name: 'DashbordView',
+    component:DashbordView
+    
+  },
+  {
+    path: '/GestionUser',
+    name: 'GestionUser',
+    component:GestionUser
     
   },
 ]
