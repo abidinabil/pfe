@@ -1,6 +1,6 @@
 <template>
 <nav>
-    <v-app-bar flat app color="white">
+    <v-app-bar flat app color="white" >
            <v-app-bar-nav-icon @click="drawer= true"></v-app-bar-nav-icon>
         <v-toolbar-title class="text-uppercase grey-text">
             <span class="font-weight-light" >Fit</span>
@@ -55,7 +55,7 @@ export default {
              items: [
         { text: 'Dashbord', icon: 'mdi-home ;' , route:'/DashbordView' },
         { text: 'Gestion User', icon: 'mdi-account' , route:'/GestionUser' },
-            { text: 'Team', icon: 'mdi-account' , route:'/TeamView' },
+            { text: 'Gestion Nutrition', icon: 'mdi-account' , route:'/GestionNutrition' },
             { text: 'Boutique', icon: 'mdi-shopping' , route:'/BoutiqueView' },
              { text: 'example', icon: 'mdi-shopping' , route:'/exampleView' },
                { text: 'login', icon: 'mdi-shopping' , route:'/loginView' },

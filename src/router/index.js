@@ -13,6 +13,8 @@ import AddCoach from '@/views/AddCoach'
 import SideBar from '@/components/SideBar.vue'
 import DashbordView from '@/views/Admin/DashbordView.vue'
 import GestionUser from '@/views/Admin/GestionUser'
+import NutritionView from '@/views/NutritionView.vue'
+import GestionNutrition from '@/views/Admin/GestionNutrition.vue'
 
 
 const routes = [
@@ -104,6 +106,18 @@ const routes = [
     path: '/GestionUser',
     name: 'GestionUser',
     component:GestionUser
+    
+  },
+  {
+    path: '/GestionNutrition',
+    name: 'GestionNutrition',
+    component:GestionNutrition
+    
+  },
+  {
+    path: '/NutritionView',
+    name: 'NutritionView',
+    component:NutritionView
     
   },
 ]
