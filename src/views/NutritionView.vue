@@ -76,6 +76,8 @@
                 <v-btn to="SignUp" style="background-color: white ; color:black">Commencer a manger sainement</v-btn>      
         </div>
   </div>
+
+  
         <div class="mange" style="margin-top:-20px">
             <v-container>
                    <h2 class="text-align:center" style="color:white">Welcome to FitBodt</h2>

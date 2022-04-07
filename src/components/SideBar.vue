@@ -53,12 +53,12 @@ export default {
         return {
             drawer: false,
              items: [
-        { text: 'Dashbord', icon: 'mdi-home ;' , route:'/DashbordView' },
-        { text: 'Gestion User', icon: 'mdi-account' , route:'/GestionUser' },
-            { text: 'Gestion Nutrition', icon: 'mdi-account' , route:'/GestionNutrition' },
-            { text: 'Boutique', icon: 'mdi-shopping' , route:'/BoutiqueView' },
-             { text: 'example', icon: 'mdi-shopping' , route:'/exampleView' },
-               { text: 'login', icon: 'mdi-shopping' , route:'/loginView' },
+              { text: 'Dashbord', icon: 'mdi-home ;' , route:'/DashbordView' },
+              { text: 'Gestion User', icon: 'mdi-account' , route:'/GestionUser' },
+              { text: 'Gestion Nutrition', icon: 'mdi-account' , route:'/GestionNutrition' },
+              { text: 'Boutique', icon: 'mdi-shopping' , route:'/BoutiqueView' },
+              { text: 'example', icon: 'mdi-shopping' , route:'/exampleView' },
+              { text: 'login', icon: 'mdi-shopping' , route:'/loginView' },
         
       ],
         }

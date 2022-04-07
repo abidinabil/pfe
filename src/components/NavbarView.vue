@@ -58,6 +58,7 @@ export default {
              { text: 'example', icon: 'mdi-shopping' , route:'/exampleView' },
                { text: 'login', icon: 'mdi-shopping' , route:'/loginView' },
                  { text: 'Nutrition', icon: 'mdi-shopping' , route:'/NutritionView' },
+                   { text: 'Entrainement', icon: 'mdi-shopping' , route:'/EntrainementView' },
         
       ],
         }

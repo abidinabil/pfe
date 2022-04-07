@@ -2,14 +2,16 @@
   
 
      <side-bar />
-     
+    
+     <div >
         <v-card
-      style=" background: linear-gradient(87deg,#2dce89,#2dcecc)!important; margin-top:90px"
+      style=" background: linear-gradient(87deg,#2dce89,#2dcecc)!important; margin-top:90px; "
       height="500px"
       tile
       flat
       
-      class="d-flex align-center  "
+      
+      class="d-flex align-center "
       
     >
       <v-row>
@@ -72,6 +74,9 @@
                     </v-col>
                             </v-row>
                             </v-card>
+                            </div>
+                            
+                    
               
   
 </template>

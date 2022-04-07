@@ -15,6 +15,9 @@ import DashbordView from '@/views/Admin/DashbordView.vue'
 import GestionUser from '@/views/Admin/GestionUser'
 import NutritionView from '@/views/NutritionView.vue'
 import GestionNutrition from '@/views/Admin/GestionNutrition.vue'
+import EditNutrition from '@/views/Admin/EditNutrition.vue'
+import EntrainementView from '@/views/EntrainementView'
+
 
 
 const routes = [
@@ -120,6 +123,19 @@ const routes = [
     component:NutritionView
     
   },
+  {
+    path: '/EntrainementView',
+    name: 'EntrainementView',
+    component:EntrainementView
+    
+  },
+  {
+    path: '/EditNutrition/:id?',
+    name: 'EditNutrition',
+    component:EditNutrition
+    
+  },
+
 ]
 
 const router = createRouter({

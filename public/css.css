@@ -1,0 +1,18 @@
+
+.box{
+    display: flex;
+    padding: 5rem 10rem;
+    gap: 2rem;
+    
+}
+.box .image{
+    flex: 1 1 45rem;
+}
+.box .image img{
+  width: 100%;
+  position: sticky;
+  top: 2rem;
+}
+.box .text{
+    flex: 1 1 45rem;
+}
