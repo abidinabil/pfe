@@ -337,7 +337,7 @@ html{
 .right {
   width: 70%;
   min-height: 400px;
-  background-color: black;
+  background-color: #181818 ;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -351,7 +351,7 @@ html{
   text-decoration: none;
   text-transform: uppercase;
   background-color: white;
-  color: black;
+  background-color: #181818 ;
   padding: 20px 30px;
   display: inline-block;
   letter-spacing: 2px;
@@ -375,7 +375,7 @@ html{
 }
 /* fin comno */
 .offer{
-  background-color: black;
+  background-color: #181818 ;
   min-height: 75vh;
 }
 @media (max-width: 1000px) {
@@ -417,7 +417,7 @@ html{
     padding: 2rem 9%;
     display: flex;
     align-items: center;
-    background-color: black;
+ background-color: #181818 ;
   
 }
 
@@ -430,7 +430,7 @@ html{
     padding: 2rem 9%;
     display: flex;
     align-items: center;
-    background-color: black;
+   background-color: #181818 ;
   
 }
   /*-------------------------offer --------------------------*/
