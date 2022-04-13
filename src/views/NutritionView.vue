@@ -7,7 +7,7 @@
             
             <p style="color:aliceblue ; font-size:20px"  >Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti voluptatem animi eveniet voluptate beatae, facilis vitae 
               rerum perspiciatis blanditiis porro, unde, sunt optio similique quidem ab. Veniam laudantium tempore dolore.</p>
-           <v-btn style="background-color: white ; color:black" >Commencer dés maintenant</v-btn>    
+           <v-btn to="ArticleNutrition" style="background-color: white ; color:black" >Commencer dés maintenant</v-btn>    
       </v-col>
       </v-row>
  
@@ -73,7 +73,7 @@
               </v-row>
               <br>
               <p style="color:aliceblue ; "  >Les résultats peuvent varier en fonction de votre niveau sportif, votre entraînement et votre alimentation.</p><br>
-                <v-btn to="SignUp" style="background-color: white ; color:black">Commencer a manger sainement</v-btn>      
+                <v-btn to="ArticleNutrition" style="background-color: white ; color:black">Commencer a manger sainement</v-btn>      
         </div>
   </div>
 
@@ -130,7 +130,7 @@ export default {
     
     min-height: 105vh;
     min-width: 57vh;
-    margin-top: 62px;
+   
     background-size: cover !important;
     background-position: center !important;
     padding: 2rem 9%;

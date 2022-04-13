@@ -17,6 +17,9 @@ import NutritionView from '@/views/NutritionView.vue'
 import GestionNutrition from '@/views/Admin/GestionNutrition.vue'
 import EditNutrition from '@/views/Admin/EditNutrition.vue'
 import EntrainementView from '@/views/EntrainementView'
+import SignIn1 from '../views/Admin/SignIn1.vue'
+import ArticleNutrition from '../views/ArticleNutrition.vue'
+import BlogView from '@/views/BlogView.vue'
 
 
 
@@ -135,6 +138,21 @@ const routes = [
     component:EditNutrition
     
   },
+  {
+    path: '/SignIn1',
+    name: 'SignIn1',
+    component:SignIn1,
+  },
+  {
+    path: '/ArticleNutrition',
+    name: 'ArticleNutrition',
+    component:ArticleNutrition,
+  },
+  {
+    path: '/BlogView',
+    name: 'BlogView',
+    component:BlogView,
+  }
 
 ]
 

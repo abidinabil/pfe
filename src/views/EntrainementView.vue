@@ -192,6 +192,7 @@
       <h1 style="color:white; font-size:50px">Stay informed on our <br> latest news.</h1>
      
        <v-row>
+         
       <v-col cols="12" md="4" lg="4" >
           <v-img  class="bg-white" width="400px" height="400px"  :aspect-ratio="1"  src="https://wgl-demo.net/zium/wp-content/uploads/2021/12/blog-single-12-740x600.jpg" 
                    cover    >

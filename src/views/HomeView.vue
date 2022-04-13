@@ -1,7 +1,8 @@
 <template>
 <navbar-view />
 <div>
-  <v-container class="my-5">
+  
+  <v-container >
       <v-card flat v-for="project in projects" :key="project.title">
         <v-layout row wrap :class="`pa-3 project ${project.content}`">
           <v-col xs="12" md="6">
@@ -104,6 +105,42 @@
       </v-card>
     </v-dialog>
   </v-row>
+  <v-container>
+  <v-row >
+    <v-col cols="12" md="4"  lg="4" v-for="project in projects" :key="project.title">
+   <v-hover v-slot="{ isHovering, props }">
+    <v-card
+      class="mx-auto"
+      color="grey-lighten-4"
+      max-width="600"
+      v-bind="props"
+    >
+      <v-img
+        :aspect-ratio="16/9"
+        cover
+        src="https://cdn.vuetifyjs.com/images/cards/kitchen.png"
+      >
+        <v-expand-transition>
+          <div
+            v-if="isHovering"
+            class="d-flex transition-fast-in-fast-out bg-blue-darken-2 v-card--reveal "
+            style="height: 100%;"
+          >
+           <p style="margin-top:100px"> temps de lecture</p> 
+          </div>
+        </v-expand-transition>
+      </v-img>
+       
+    </v-card>
+  </v-hover>
+   <h1 >{{project.title}}</h1>
+   <p>{{project.Person}}</p>
+  </v-col>
+ 
+  </v-row>
+  </v-container>
+  <br>
+  <br><br><br><br>
  
 </template>
 

@@ -1,67 +1,120 @@
 <template>
-<nav>
-    <v-app-bar flat app color="black">
-           <v-app-bar-nav-icon @click="drawer= true"></v-app-bar-nav-icon>
-        <v-toolbar-title class="text-uppercase grey-text">
-            <span class="font-weight-light" >Fit</span>
-            <span right>Body</span>
-               </v-toolbar-title> 
-               <v-spacer></v-spacer>
-               <v-btn to="/SignIn">Se Connecter</v-btn>
-                <v-btn to="SignUp" style="background-color: white ; color:black">Commencer dés maintenant</v-btn>
-           
-           
-         
-  
-    </v-app-bar>
-    <v-navigation-drawer app v-model="drawer" temporary  color="primary">
-        <v-layout column align-center>
-         <v-flex class="ml-15">
-             <v-avatar size="150">
-                 <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSMH6Rbg-7rqO_ShvdaxgXL4PhU60a9iynJ_Q&usqp=CAU">
-             </v-avatar>
-         </v-flex>
-        </v-layout>
-        <v-col mb="10">
-         <PopupView /> </v-col>
-         <v-list color="primary" >
+  <nav>
+    <div class="logo">FitBody</div>
+    <input type="checkbox" id="click">
+    <label for="click" class="menu-btn">
+      <i class="fas fa-bars"></i>
+    </label>
+    <ul>
+
+      <li>  <v-btn to="/SignIn">Se Connecter</v-btn></li>
+       <li><v-btn to="SignUp" style="background-color: white ; color:black">Commencer dés maintenant</v-btn></li> 
       
-      <v-list-item-group >
-         
-        <v-list-item v-for="item in items" :key="item.text" router :to="item.route" >
-          <v-list-item-action>
-            <v-icon >{{item.icon}}</v-icon>
-          </v-list-item-action>
-          <v-list-item-content>
-            <v-list-item-title >{{item.text}}</v-list-item-title>
-             
-          </v-list-item-content>
-        </v-list-item>
-      </v-list-item-group>
-    </v-list>
-    </v-navigation-drawer>
-   
-</nav>
+    </ul>
+  </nav>
 </template>
-<script>
-import PopupView from "./PopupView.vue"
-export default {
-    component:{PopupView},
-    data() {
-        return {
-            drawer: false,
-             items: [
-        { text: 'Home', icon: 'mdi-home' , route:'/' },
-        { text: 'About', icon: 'mdi-camera-image' , route:'/AboutView' },
-            { text: 'Team', icon: 'mdi-account' , route:'/TeamView' },
-            { text: 'Boutique', icon: 'mdi-shopping' , route:'/BoutiqueView' },
-             { text: 'example', icon: 'mdi-shopping' , route:'/exampleView' },
-               { text: 'login', icon: 'mdi-shopping' , route:'/loginView' },
-                 { text: 'Nutrition', icon: 'mdi-shopping' , route:'/NutritionView' },
-                   { text: 'Entrainement', icon: 'mdi-shopping' , route:'/EntrainementView' },
-        
-      ],
-        }
-    },
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+} 
+nav{
+
+  display: flex;
+  height: 80px;
+  width: 100%;
+  background: #1b1b1b;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 50px 0 100px;
+  flex-wrap: wrap;
 }
-</script>
+nav .logo{
+  color: #fff;
+  font-size: 35px;
+  font-weight: 600;
+}
+nav ul{
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+}
+nav ul li{
+  margin: 0 5px;
+}
+nav ul li a{
+  color: #f2f2f2;
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: 500;
+  padding: 8px 15px;
+  border-radius: 5px;
+  letter-spacing: 1px;
+  transition: all 0.3s ease;
+}
+nav ul li a.active,
+nav ul li a:hover{
+  color: #111;
+  background: #fff;
+}
+nav .menu-btn i{
+  color: #fff;
+  font-size: 22px;
+  cursor: pointer;
+  display: none;
+}
+input[type="checkbox"]{
+  display: none;
+}
+@media (max-width: 1000px){
+  nav{
+    padding: 0 40px 0 50px;
+  }
+}
+@media (max-width: 920px) {
+  nav .menu-btn i{
+    display: block;
+  }
+  #click:checked ~ .menu-btn i:before{
+    content: "\f00d";
+  }
+  nav ul{
+    position: absolute;
+    top: 80px;
+    left: -100%;
+    background: #111;
+    height: 120vh;
+    width: 100%;
+    text-align: center;
+    display: block;
+    transition: all 0.3s ease;
+  }
+  #click:checked ~ ul{
+    left: 0;
+  }
+  nav ul li{
+    width: 100%;
+    margin: 40px 0;
+  }
+  nav ul li a{
+    width: 100%;
+    margin-left: -100%;
+    display: block;
+    font-size: 20px;
+    transition: 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  }
+  #click:checked ~ ul li a{
+    margin-left: 0px;
+  }
+  nav ul li a.active,
+  nav ul li a:hover{
+    background: none;
+    color: cyan;
+  }
+}
+
+
+</style>

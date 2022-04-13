@@ -1,15 +1,16 @@
 <template>
     <side-bar />
-    
+    <v-row>
+    <v-col cols="12" md="2"></v-col>
+    <v-col cols="12" md="10">
+   
       <v-card
       
       height="500px"
       tile
       flat
-     
       class="mx-10"
-      
-      style="background:url(https://images.pexels.com/photos/4498606/pexels-photo-4498606.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940); margin-top:80px"
+      style="background:url(https://images.pexels.com/photos/257816/pexels-photo-257816.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940); margin-top:80px"
       dark
     >
      
@@ -20,7 +21,7 @@
                      <v-toolbar extended color="transparent">
                 
 
-                <h1>List Nutrition</h1> <br>
+                <h1 style="font-size:20px; "> List Nutrition</h1> <br>
                 
                 
 
@@ -110,18 +111,20 @@
                            </v-col>
                        
                            </v-row>
-                          <v-text-field
-                            v-model="image"
-                            label="image"
-                            outlined
-                            dense
-                            color="blue"
-                            autocomplete="false"
-                           class="mt-4"
-                          />
-                               
+                            <v-file-input
+                    accept="image/*"
+                    label="File input"
+                    ref="files"
+                    v-model="image"
+                  ></v-file-input>
+                          
+                     
+
+                            <!-- <div class="m-auto">
+                               <p v-for="(image,index) in images" :key="index">{{image.name}}</p>
+                               </div>  --> 
                            
-                          <v-btn color="blue" dark block tile type="submit" @click="saveNutrition"> Ajouter</v-btn>
+                          <v-btn color="blue" dark block tile type="submit"  @click="saveNutrition"> Ajouter</v-btn>
                  
                           </v-col>
                         </v-row>  
@@ -169,7 +172,7 @@
             <td>{{nutrition.title}}</td>
             <td>{{nutrition.text}}</td>
             <td>{{nutrition.subtext}}</td>
-             <td>{{nutrition.image}}</td>
+             <v-img>{{nutrition.image}}</v-img>
              <td>
                <v-btn type="button" @click="deleteNutrtion(nutrition.id) " color="error"> delete</v-btn> 
                
@@ -280,7 +283,8 @@
   <!-- Button trigger modal -->
 
 
-   
+  </v-col> 
+  </v-row>
 </template>
 <script>
 import SideBar from "@/components/SideBar.vue"
@@ -294,6 +298,8 @@ export default {
         return{
               test: false,
               dialog:false,
+              
+              
                 
           nutritions :{},
           id:"",
@@ -316,6 +322,12 @@ export default {
 
      
         saveNutrition(){
+       /*     var self =this;
+         let formData = new FormData();
+         for(let i = 0; this.image.length ; i++){
+         let file = self.image[i];
+         formData.append('files[' + i+ ']',file)
+         } */
            axios.post('http://localhost:8000/api/auth/Nutrition' ,{
                title : this.title,
                text: this.text,
@@ -335,6 +347,9 @@ export default {
                }
           });
         },
+      /*  onFileChange(event){
+            this.image = event.target.files[0];
+        }, */
      
 
 
@@ -400,7 +415,49 @@ export default {
                  alert('error')
                }
           });
-       }
+       },
+       imagechange(){
+         for(let i = 0 ;i<this.$refs.files.files.length; i++){
+           this.image.push(this.$refs.files.files[i]);
+           console.log(this.image);
+         }
+       },
+    /*   uploadImage(){
+         var self =this;
+         let formData = new FormData();
+         for(let i = 0; this.images.length ; i++){
+         let file = self.images[i];
+         formData.append('files[' + i+ ']',file)
+         }
+         
+       }*/
     }
 }
 </script>
+<style>
+@media(max-width: 500px){
+  .table thead{
+    display:none;
+  }
+  .table, .table tbody, .table tr,  .table th, .table td{
+    display: block;
+    width: 100%;
+  }
+  .table tr{
+    margin-bottom: 15px;
+ 
+  }
+    
+     
+      .table th::before{
+        content: attr(data-label);
+        position: absolute;
+        left: 0;
+       
+        padding-left: 15px;
+        font-size: 15px;
+        font-weight: bold;
+        text-align: left;
+      };
+}
+</style>

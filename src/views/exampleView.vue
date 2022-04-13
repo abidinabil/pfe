@@ -16,49 +16,35 @@
     </v-row>
    </v-container><br><br>
     </div>
-    <br>
-    <br>
+  <br><br><br><br><br>
     <div>
         <v-container>
             <v-row >
-                <v-col cols="12" xs="12" md="8" lg="3">
-                    <p style="color:blue">Training Journey</p>
-                    <h1>
-                        A training journey for every goal
-                    </h1>
-                    <p>
-                        Your Coach analyzes your fitness and goals, <br>
-                         paving your individual path to success
-                    </p>
-                     <v-btn style="margin-left:50px" depressed color="black">  learn about training <v-icon>mdi-arrow-right</v-icon> </v-btn>
-                
+                <v-col cols="12" xs="12" md="8" lg="4">
+                 <h1 class="stroke">01</h1>
+                 <h3 style="color:black ; margin-top:-60px; margin-left:60px"> Motivate</h3>
+                 <p >It’s one of the best methods of combining the independence and initiative of individual ownership.</p>
                 </v-col>
-                  <v-col cols="12" xs="12" md="8" lg="3">
-                       <v-img rounded src="https://images.pexels.com/photos/221210/pexels-photo-221210.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"  style="  margin-top:70px " ></v-img>
-                     
-                       
-
+                    <v-col cols="12" xs="12" md="8" lg="4">
+                 <h1 class="stroke">02</h1>
+                 <h3 style="color:black ; margin-top:-60px; margin-left:60px"> Workout</h3>
+                 <p >It’s one of the best methods of combining the independence and initiative of individual ownership.</p>
                 </v-col>
-                  <v-col cols="12" xs="12" md="8" lg="3">
-                   <v-img rounded src="https://images.pexels.com/photos/2294363/pexels-photo-2294363.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"  ></v-img>
-
+                    <v-col cols="12" xs="12" md="8" lg="4">
+                 <h1 class="stroke">03</h1>
+                 <h3 style="color:black ; margin-top:-60px; margin-left:60px"> Resultat</h3>
+                 <p >It’s one of the best methods of combining the independence and initiative of individual ownership.</p>
                 </v-col>
-                  <v-col cols="12" xs="12" md="8" lg="3">
-                   <v-img rounded src="https://images.pexels.com/photos/903171/pexels-photo-903171.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"  style="margin-top:70px"  ></v-img>
-                </v-col>
+                  
                
             </v-row>
         </v-container>
         
     </div>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
+    <br><br><br><br><br><br><br><br><br>
+ 
     <section>
-        <div class="Benefits">
+        <div class="Benefits" style="padding:9%">
         <v-row>
           <v-col cols="12" xs="12" md="6"  lg="6">
           <v-img class="i" src="https://images.pexels.com/photos/1582161/pexels-photo-1582161.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940">   </v-img>
@@ -90,17 +76,7 @@
       <br>
       <br>
 
-    <v-container>
-   <h4  class="text-center"> We take care of everything</h4><br><br>
-    <v-row>
-      <v-col v-for="about in abouts" :key="about.icon" class="text-center"  xs="4" md="4">
-       <v-icon class="text-center" color="yellow">{{about.icon}}</v-icon>
-       <h5 class="text-center" >{{about.title}}</h5>
-       <p>{{about.text}}</p>
-      </v-col>
    
-      </v-row>
-    </v-container>
 
     <br>
     <br>
@@ -159,22 +135,28 @@
       <br>
       <br>
        <div class="offer">
-          <v-container>
-           <p style="color:white; text-align:center"> WHAT WE OFFER</p> 
-           <h2 style=" text-align:center" class="best"> The best standards <br> anywhere. </h2>
-           <br>
-           <br>
-           <br>
+         
+            <br>
+            <br>
+               <span style="background-color: cadetblue; color:white; font-size:20px ;" class="text-center"> We take care of everything</span> <br>
+               <br>
+               <br>
+               <h1 style="color:white ; font-size:80px" class="text-center">The Best Standards <br> Anywhere.</h1>
+               <h1 style=" margin-left:-80px; margin-top:-180px; text-transform:uppercase;letter-spacing:2px;-webkit-text-fill-color:transparent;-webkit-text-stroke-width:2px; font-size:600px; ">sport
+                 
 
-            <v-row>
-              <v-col v-for="offer in Offers" :key="offer.icon" class="text-center" xs="4" md="3">
-              <v-icon class="text-center" style="color:yellow">{{offer.icon}}</v-icon>
-              <h5 class="text-center" style="color:white" >{{offer.title}}</h5>
-              <p style="color:white">{{offer.des}}</p>
-              </v-col>
-          
-              </v-row>
-                  </v-container>
+               </h1>
+                 <v-container style="margin-top:-400px">
+                     <v-row>
+                       
+                      <v-col v-for="about in abouts" :key="about.icon" class="text-center"  xs="4" md="4">
+                      <v-icon class="stroke" color="white" style="font-size:80px">{{about.icon}}</v-icon>
+                      <h5 class="text-center" style="color:white" >{{about.title}}</h5>
+                      <p style="color:white">{{about.text}}</p>
+                      </v-col>
+                  
+                      </v-row>
+                 </v-container>         
        </div>
 
       <br>
@@ -183,6 +165,87 @@
       <br>
       <br>
       <br>
+      <div>
+        <v-row>
+          <v-col cols="12" md="6" lg="6" style="padding:2%">
+                <v-img  class="bg-white" width="900px" height="600px" :aspect-ratio="1"  src="https://wgl-demo.net/zium/wp-content/uploads/2021/12/home2_image_2.jpg" 
+                   cover    >
+                
+                   </v-img>
+          </v-col>
+          <v-col cols="12" md="6" lg="6" style="padding:5rem">
+               <span style="background-color: black; color:white; font-size:20px ; text-transform:uppercase"> OUR PHILOSOPHY</span> <br>
+               <h1 style="  color: #181818 ;">We make real results <br> happen.</h1><br><br><br>
+                  <v-expansion-panels
+      v-model="panel"
+      :disabled="disabled"
+      multiple
+    >
+      <v-expansion-panel>
+        <v-expansion-panel-title style=" font-size:20px; font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif">We Find Your Trainer</v-expansion-panel-title>
+        <v-expansion-panel-text>
+          Real metrics lead to real results. Our trainers combine data from your, our 1-hour fitness assessment, <br>
+           with information about your lifestyle to build a program that is specific to you and your goals.
+        </v-expansion-panel-text>
+      </v-expansion-panel>
+
+      <v-expansion-panel>
+        <v-expansion-panel-title style=" font-size:20px; font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif">We Make Your Plan</v-expansion-panel-title>
+        <v-expansion-panel-text>
+            Real metrics lead to real results. Our trainers combine data from your, our 1-hour fitness assessment, <br>
+           with information about your lifestyle to build a program that is specific to you and your goals.
+        </v-expansion-panel-text>
+      </v-expansion-panel>
+
+      <v-expansion-panel>
+        <v-expansion-panel-title style=" font-size:20px; font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif">Take your Training Anywhere</v-expansion-panel-title>
+        <v-expansion-panel-text>
+            Real metrics lead to real results. Our trainers combine data from your, our 1-hour fitness assessment, <br>
+           with information about your lifestyle to build a program that is specific to you and your goals.
+        </v-expansion-panel-text>
+      </v-expansion-panel>
+    </v-expansion-panels>
+    
+          </v-col>
+        </v-row>
+      </div>
+
+       <div class="Boutique">
+    <br>
+    <br>
+      <h4  class="text-center" style="color:black"> Osez être vous-même</h4>
+      <p class="text-center" style="font-size:20px">Pas d'excuses, d'excellents résultats. Les Athlètes Libres en <br> sont la preuve.
+      <br>
+      <br>
+      <br>
+<v-container>
+    <v-row>
+      <v-col cols="12" md="4" lg="4" >
+          <v-img  class="bg-white" width="500px" height="400px"  :aspect-ratio="1"  src="https://images.pexels.com/photos/4327024/pexels-photo-4327024.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" 
+                   cover    >
+                    <p style="color:white; margin-top:330px" class="text-center">Equipement <v-icon>mdi-arrow-right</v-icon></p>
+                   </v-img>
+      </v-col>
+       <v-col cols="12" md="4" lg="4" >
+            <v-img  class="bg-white" width="500px" height="400px"  :aspect-ratio="1"  src="https://images.pexels.com/photos/6303477/pexels-photo-6303477.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" 
+                   cover    >
+                    <p style="color:white; margin-top:330px" class="text-center">Hommes <v-icon>mdi-arrow-right</v-icon></p>
+                   </v-img>
+      </v-col>
+       <v-col cols="12" md="4" lg="4" >
+             <v-img  class="bg-white" width="500px" height="400px" :aspect-ratio="1"  src="https://images.pexels.com/photos/7242816/pexels-photo-7242816.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" 
+                   cover    >
+                    <p style="color:white; margin-top:330px" class="text-center">Femmes <v-icon>mdi-arrow-right</v-icon></p>
+                   </v-img>
+      </v-col>
+      
+        
+    </v-row>
+    <br>
+    <v-btn style="background-color: black ; color:white ; padding:2rem" class="text-center" >Boutique FitBody Essentials </v-btn> 
+    </v-container>
+</p>
+  </div>
      
       <div>
         <v-container>
@@ -277,6 +340,18 @@ export default {
 
 
 <style>
+.Boutique{
+    min-height: 105vh; 
+    background: lightgray; 
+}
+.stroke{
+  
+  font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; 
+ font-size: 160px;
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke-width: 1px;
+}
+
 html{
   scroll-behavior: smooth;
 }
@@ -376,7 +451,7 @@ html{
 /* fin comno */
 .offer{
   background-color: #181818 ;
-  min-height: 75vh;
+  min-height: 120vh;
 }
 @media (max-width: 1000px) {
   .Benefits{
