@@ -5,16 +5,14 @@
     <v-col cols="12" md="10">
      <div >
         <v-card
-      style=" background: linear-gradient(87deg,#2dce89,#2dcecc)!important; margin-top:90px; "
-      height="500px"
+      style=" background: linear-gradient(87deg,#2dce89,#2dcecc)!important; margin-top:50px; "
+      height="450px"
       tile
-      flat
-      
-      
+      flat   
       class="d-flex align-center "
       
     >
-      <v-row>
+      <v-row style="margin-top:-150px">
         <v-col cols="12" xs="12" sm="6" md="4" lg="3" v-for="stat in Statistics" :key="stat.title">
            <v-card
     class="mx-auto"

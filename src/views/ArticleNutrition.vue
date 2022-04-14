@@ -1,5 +1,6 @@
 <template>
-<blog-view />
+<navbar-view />
+
 <div class="ArticleNutrition">
    <v-container>
        <br><br>
@@ -48,10 +49,12 @@
 
 </template>
 <script>
-import BlogView from './BlogView.vue'
+
 import axios from 'axios'
+import NavbarView from '@/components/NavbarView.vue';
 export default {
-  components: { BlogView },
+  components: { NavbarView },
+
  
     data() {
         return{
@@ -79,7 +82,7 @@ export default {
 </script>
 <style>
 .ArticleNutrition{
-    margin-top:120px;
+    margin-top:50px;
     min-height: 35vh; 
     background: lightgray; 
    

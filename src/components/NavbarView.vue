@@ -1,15 +1,36 @@
 <template>
   <nav>
-    <div class="logo">FitBody</div>
+      <v-toolbar-title class="text-uppercase " style="color:white">
+      <span class="font-weight-light">Fit</span>
+      <span>Body</span>
+   
+    </v-toolbar-title>
+       
     <input type="checkbox" id="click">
     <label for="click" class="menu-btn">
       <i class="fas fa-bars"></i>
     </label>
+ 
     <ul>
-
+      <li><router-link to="EntrainementView">Entrainement</router-link></li>
+      <li><router-link to="NutritionView">Nutrition</router-link></li>
+      <li>
+             <v-menu>
+      <template v-slot:activator="{ props }">
+        <li v-bind="props"  >
+          <router-link to="">Blog</router-link>
+        </li>
+      </template>
+      <v-list>
+               <li><router-link to="">Actualité</router-link></li>
+                <li><router-link to="">Nutritionniste</router-link></li>
+                <li><router-link to="">Coach</router-link></li>
+      </v-list>
+    </v-menu>
+      </li>
+       <li><router-link to="">Boutique</router-link></li>
       <li>  <v-btn to="/SignIn">Se Connecter</v-btn></li>
-       <li><v-btn to="SignUp" style="background-color: white ; color:black">Commencer dés maintenant</v-btn></li> 
-      
+       <li>  <v-btn to="/SignUp">Commencer dés maintenant</v-btn></li>  
     </ul>
   </nav>
 </template>
@@ -22,7 +43,7 @@
   font-family: 'Poppins', sans-serif;
 } 
 nav{
-
+   position: fixed;
   display: flex;
   height: 80px;
   width: 100%;
@@ -41,19 +62,21 @@ nav ul{
   display: flex;
   flex-wrap: wrap;
   list-style: none;
+
 }
 nav ul li{
   margin: 0 5px;
+  
 }
 nav ul li a{
   color: #f2f2f2;
   text-decoration: none;
   font-size: 18px;
   font-weight: 500;
-  padding: 8px 15px;
+ 
   border-radius: 5px;
   letter-spacing: 1px;
-  transition: all 0.3s ease;
+  
 }
 nav ul li a.active,
 nav ul li a:hover{

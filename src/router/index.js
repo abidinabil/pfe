@@ -20,6 +20,9 @@ import EntrainementView from '@/views/EntrainementView'
 import SignIn1 from '../views/Admin/SignIn1.vue'
 import ArticleNutrition from '../views/ArticleNutrition.vue'
 import BlogView from '@/views/BlogView.vue'
+import GestionExercice from '../views/Admin/GestionExercice.vue'
+import NutritionnisteView from '@/views/NutritionnisteView.vue'
+import GestionNutritionniste from '../views/Admin/GestionNutritionniste.vue'
 
 
 
@@ -152,7 +155,23 @@ const routes = [
     path: '/BlogView',
     name: 'BlogView',
     component:BlogView,
+  },
+  {
+    path: '/GestionExercice',
+    name: 'GestionExercice',
+    component:GestionExercice,
+  },
+  {
+    path: '/NutritionnisteView',
+    name: 'NutritionnisteView',
+    component:NutritionnisteView,
+  },
+  {
+    path: '/GestionNutritionniste',
+    name: 'GestionNutritionniste',
+    component:GestionNutritionniste,
   }
+
 
 ]
 

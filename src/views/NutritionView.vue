@@ -1,5 +1,6 @@
 <template>
    <navbar-view />
+   <div class="pe">
    <div class="Nutrition">
        <v-row >
       <v-col  cols="12" xs="12" sm="6" md="12" lg="12" class="text-align:center">
@@ -84,6 +85,7 @@
             </v-container>
             
         </div>
+         </div>
 
 </template>
 <script>
@@ -126,6 +128,7 @@ export default {
 }
 </script>
 <style>
+
 .Nutrition{
     
     min-height: 105vh;
@@ -176,6 +179,7 @@ export default {
   .show-btns {
     color: rgba(255, 255, 255, 1) !important;
   }
+ 
 </style>
     
 

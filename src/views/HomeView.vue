@@ -1,6 +1,6 @@
 <template>
 <navbar-view />
-<div>
+<div style="margin-top:150px">
   
   <v-container >
       <v-card flat v-for="project in projects" :key="project.title">

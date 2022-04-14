@@ -259,27 +259,7 @@
         <br>
         <br>
         
-        <v-row>
-          <v-col cols="12" md="4" lg="4" v-for="blog in Blog" :key="blog.title">
-            <div class="wrapper">
-         <div class="box">
-            <div class="front-face" >
-               <div class="icon">
-                    <v-img :src="blog.img"></v-img>
-               </div>
-             
-            </div>
-            <div class="back-face">
-               <span>{{blog.title}}</span>
-               <p>
-                 {{blog.text}}
-               </p>
-            </div>
-         </div>
-        
-      </div>
-          </v-col>
-        </v-row>
+      
         </v-container>
       </div>
       <br>
@@ -536,47 +516,7 @@ p{
 
 /* box flip */
 
-@media (max-width: 700px) {
-  .wrapper{
-    margin: 200px auto;
-  }
-}
-.wrapper .box{
- 
-  margin: 0 auto;
-  position: relative;
-  perspective: 1000px;
-}
-.wrapper .box .front-face{
-  background: #fff;
-  height: 500px;
-  width: 100%;
 
-}
-
-
-.box .back-face{
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 1;
-  height: 500px;
-  width: 100%;
-  padding: 30px;
-  color: #fff;
-
-  transform-style: preserve-3d;
-  backface-visibility: hidden;
-  background: linear-gradient(-135deg, rgb(120, 137, 248), rgb(90, 238, 199));
-  transform: translateY(110px) rotateX(-90deg);
-  box-shadow: 0px 5px 20px 0px rgba(0, 81, 250, 0.1);
-  transition: all 0.5s ease;
-}
-
-.box:hover .back-face{
-  opacity: 1;
-  transform: rotateX(0deg);
-}
 /*fin box flip */
 
 
