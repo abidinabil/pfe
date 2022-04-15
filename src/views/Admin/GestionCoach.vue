@@ -9,7 +9,7 @@
       tile
       flat
       class="mx-10"
-      style="background:url(https://images.pexels.com/photos/1552252/pexels-photo-1552252.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500); margin-top:80px"
+      style="background:url(https://images.pexels.com/photos/5646011/pexels-photo-5646011.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940); margin-top:80px"
       dark
     >
      
@@ -18,7 +18,7 @@
              <v-row>
                  <v-col cols="12" md="12">
                      <v-toolbar extended color="lightgray">
-                <h1 style="font-size:20px; "> List Exercice</h1> <br>
+                <h1 style="font-size:20px; "> List Coach</h1> <br>
                 
                 
 
@@ -37,7 +37,7 @@
       color="primary"
       v-bind="props"
     >
-      Ajout Exercice
+      Ajout Coach
     </v-btn>
 
       </template>
@@ -71,7 +71,7 @@
                       <v-card-text class="mt-12">
                         <h4
                           class="text-center"
-                        >Ajouter Exercice</h4>
+                        >Ajouter Coach</h4>
                         
                         <v-row align="center" justify="center">
                           <v-col cols="12" sm="8">
@@ -164,47 +164,16 @@
 </template>
 <script>
 import SideBar from '@/components/SideBar.vue'
-import axios from 'axios'
+
 export default {
   components: { SideBar },
     data() {
         return{
            dialog:false,
-           Exercices:{},
-           title:"",
-           text:"",
-           subtext :"",
-           catégorie:"",
-           video:"",
+          
 
         } 
     },
-    methods:{
-       //************************Save Nutritionniste ************************* */
-          saveExercice(){
-     
-           axios.post('http://localhost:8000/api/auth/SaveExercice' ,{
-               title : this.title,
-               text: this.text,
-               subtext: this.subtext,
-               catégorie : this.catégorie,
-               video:this.video,
-                
-
-             } ).then(response => {
-               console.log(response);
-              
-               if(response.status == 200){
-                    alert('success')
-                   
-            
-                   
-               }else{
-                 alert('error')
-               }
-          });
-        },
-         //************************Fin Save Nutritionniste ************************* */
-    }
+   
 }
 </script>

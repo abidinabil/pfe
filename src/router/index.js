@@ -23,6 +23,8 @@ import BlogView from '@/views/BlogView.vue'
 import GestionExercice from '../views/Admin/GestionExercice.vue'
 import NutritionnisteView from '@/views/NutritionnisteView.vue'
 import GestionNutritionniste from '../views/Admin/GestionNutritionniste.vue'
+import GestionCoach from '../views/Admin/GestionCoach.vue'
+import CoachView1 from '@/views/CoachView1.vue'
 
 
 
@@ -170,6 +172,16 @@ const routes = [
     path: '/GestionNutritionniste',
     name: 'GestionNutritionniste',
     component:GestionNutritionniste,
+  },
+  {
+    path: '/GestionCoach',
+    name: 'GestionCoach',
+    component:GestionCoach,
+  },
+  {
+    path: '/CoachView1',
+    name: 'CoachView1',
+    component:CoachView1,
   }
 
 

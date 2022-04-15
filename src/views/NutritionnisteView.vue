@@ -1,41 +1,121 @@
 <template>
     <navbar-view />
+    <br><br>
+          <h2 style=" color: #9AA8BA; font-size:50px; text-align:center">Accompagnement Nutritionnel</h2>
+    <v-container>
+  <v-row > 
+    <v-carousel
+    cycle
+    height="300"
+    hide-delimiter-background
+    show-arrows="hover"
+  >
+    <v-carousel-item
+    
+      :key="i"
+    >
+      <v-sheet
+       
+        height="100%"
+      >
+        <div class="d-flex fill-height justify-center align-center">
+          <p class="text-center">
+            Dans une société ou l’image corporelle prend de plus en plus de place, nos relations avec <br> notre corps et notre alimentation jouent un rôle majeur dans le bien être cognitif et <br> physiologique. <br>
+            <br> <span  style="color:#61CE70">La psychonutrition : une science ! </span>
+            
+
+          </p> <br> <br>   
+        </div>
+      
+        
+      </v-sheet>
+      
+    </v-carousel-item>
+     <v-carousel-item
+    
+     
+    >
+      <v-sheet
+       
+        height="100%"
+      >
+        <div class="d-flex fill-height justify-center align-center">
+          <p >					
+             Les choix alimentaires et votre relation à l’alimentation constituent les fondations de votre <br> santé tant physique que mentale. Au-delà de l’image, votre corps reste l’essentiel de votre <br> 
+             bien-être et travailler à prendre soin de lui chaque jour est précieux. <br>
+             <br>  <span style="color:#61CE70">Votre alimentation : le pilier de votre santé </span> 					
+          </p>
+           
+        </div>
+      </v-sheet>
+      
+    </v-carousel-item>
+  </v-carousel>
+ </v-row>
+  </v-container>
     <div style="margin-top:100px">
-         <v-row>
-          <v-col cols="12" md="4" lg="4" v-for="blog in Blog" :key="blog.title">
+         <v-row class="mx-4">
+          <v-col cols="12" md="4" lg="4" v-for="nutritionniste in nutritionnistes" :key="nutritionniste.id">
             <div class="cardNutritionniste">
          <div class="box">
             <div class="front-face" >
                <div class="icon">
-                    <v-img :src="blog.img"></v-img>
+                    <v-img  class="bg-white"   height="380px" :aspect-ratio="1"  src="https://media.istockphoto.com/photos/beautiful-smiling-nutritionist-looking-at-camera-and-showing-healthy-picture-id1044382612?s=612x612" 
+                   cover   > </v-img>
                </div>
              
             </div>
             <div class="back-face">
-               <span>{{blog.title}}</span>
+               <span>{{nutritionniste.text}}</span>
                <p>
-                 {{blog.text}}
+                 {{nutritionniste.subtext}}
                </p>
+               
             </div>
+               <span style="color:dodgerblue">Nutritionniste</span>
+               <h5>{{nutritionniste.nom}}</h5>
+               <p><v-icon style="color:dodgerblue">mdi-map-marker</v-icon> {{nutritionniste.adresse}}</p>
          </div>
+             
+   
         
       </div>
+      
           </v-col>
         </v-row>
+      
     </div>
+     
 </template>
 <script>
 import NavbarView from '@/components/NavbarView.vue'
+import axios from 'axios'
 export default {
   components: { NavbarView },
   data(){
       return{
-           Blog: [
-                { img: "https://images.pexels.com/photos/5039523/pexels-photo-5039523.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500", title: " GYM / NUTRITION", text: "Few benefits of group and  personal training" },
-                { img: "https://images.pexels.com/photos/1769626/pexels-photo-1769626.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500", title: " Exercices / NUTRITION", text: "Top 5 benefits of outdoor  personal training" },
-                { img: "https://images.pexels.com/photos/416809/pexels-photo-416809.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940", title: " GYM / WORKOUT", text: "How long does it take to get your fitness back?" }
-            ]
+               nutritionnistes:{},
+       
+        
       }
+  },
+        created(){
+      this.getNutritionniste();
+    },
+  methods:{
+       getNutritionniste(){
+       axios.get('http://localhost:8000/api/auth/getNutritionniste')
+        .then (res => {
+         console.log(res.data);
+         this.nutritionnistes = res.data;
+       }).catch(
+         error =>{
+           console.log(error);
+         } 
+         
+       )
+     },
+      //************************Fin Get Nutritionniste ************************* */
   }
     
 }
@@ -44,7 +124,7 @@ export default {
 <style>
 @media (max-width: 700px) {
   .cardNutritionniste{
-    margin: 200px auto;
+   
   }
 }
 .cardNutritionniste .box{
@@ -55,7 +135,7 @@ export default {
 }
 .cardNutritionniste .box .front-face{
   background: #fff;
-  height: 500px;
+  height: 390px;
   width: 100%;
 
 }

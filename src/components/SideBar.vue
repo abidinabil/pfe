@@ -60,6 +60,7 @@ export default {
         { text: 'Exercice', icon: 'mdi-dumbbell' , route:'/GestionExercice' },
             { text: 'Nutrition', icon: 'mdi-nutrition' , route:'/GestionNutrition' },
             { text: 'Nutritionniste', icon: 'mdi-account' , route:'/GestionNutritionniste' },
+             { text: 'Coach', icon: 'mdi-account' , route:'/GestionCoach' },
            
         
       ],

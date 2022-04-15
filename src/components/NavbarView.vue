@@ -23,8 +23,8 @@
       </template>
       <v-list>
                <li><router-link to="">Actualité</router-link></li>
-                <li><router-link to="">Nutritionniste</router-link></li>
-                <li><router-link to="">Coach</router-link></li>
+                <li><router-link to="NutritionnisteView">Nutritionniste</router-link></li>
+                <li><router-link to="CoachView1">Coach</router-link></li>
       </v-list>
     </v-menu>
       </li>
@@ -43,7 +43,7 @@
   font-family: 'Poppins', sans-serif;
 } 
 nav{
-   position: fixed;
+  
   display: flex;
   height: 80px;
   width: 100%;
