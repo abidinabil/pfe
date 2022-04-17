@@ -25,6 +25,10 @@ import NutritionnisteView from '@/views/NutritionnisteView.vue'
 import GestionNutritionniste from '../views/Admin/GestionNutritionniste.vue'
 import GestionCoach from '../views/Admin/GestionCoach.vue'
 import CoachView1 from '@/views/CoachView1.vue'
+import ProfileView from '@/views/ProfileView.vue'
+import GymView from '@/views/GymView.vue'
+import store from '@/store'
+
 
 
 
@@ -67,32 +71,35 @@ const routes = [
     path: '/BoutiqueView',
     name: 'BoutiqueView',
     component:BoutiqueView,
-   // meta: { secure: true }
+   
     
   },
   {
     path: '/SignUp',
     name: 'SignUp',
-    component:SignUp
+    component:SignUp,
+    meta: { guest: true }
     
   },
   {
     path: '/SignIn',
     name: 'SignIn',
     component:SignIn,
-    meta: { guest: true }
+      meta: { guest: true }
     
   },
   {
     path: '/CoachView',
     name: 'CoachView',
-    component:CoachView
+    component:CoachView,
+     meta: { guest: true }
     
   },
   {
     path: '/UserView',
     name: 'UserView',
-    component:UserView
+    component:UserView,
+       meta: { guest: true }
     
   },
   {
@@ -182,8 +189,19 @@ const routes = [
     path: '/CoachView1',
     name: 'CoachView1',
     component:CoachView1,
-  }
+  },
+  {
+    path: '/ProfileView',
+    name: 'ProfileView',
+    component:ProfileView,
+     meta: { secure: true }
+  },
+  {
+    path: '/GymView',
+    name: 'GymView',
+    component:GymView,
 
+  }
 
 ]
 
@@ -192,19 +210,29 @@ const router = createRouter({
   routes
 })
 
-router.beforeEach((to, from, next) =>{
- if(to.matched.some(record => record.meta.secure)){
-   if(localStorage.getItem("token") == null){
-     console.log("no token");
-     next({
-       path:"/SignIn"
-     });
-   }else{
-     next();
-   }
- }else{
-   next()
- }
+router.beforeEach((to, from, next) => {
+  if (to.matched.some(record => record.meta.secure)) {
+    // if no token
+    if (!store.state.loggedIn) {
+      //console.log("no token");
+      next({
+        path: "/login"
+      });
+    } else {
+      next();
+    }
+  } else if (to.matched.some(record => record.meta.guest)) {
+    if (!store.state.loggedIn) {
+      next();
+    } else {
+      //console.log("no token");
+      next({
+        path: "/profile"
+      });
+    }
+  } else {
+    next();
+  }
 });
 
 

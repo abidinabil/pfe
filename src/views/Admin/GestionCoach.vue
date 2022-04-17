@@ -78,8 +78,8 @@
                            <v-row>
                            <v-col cols="12" sm="6">
                             <v-text-field
-                            v-model="title"
-                            label="title"
+                            v-model="name"
+                            label="name"
                             outlined
                             dense
                             color="blue"
@@ -98,6 +98,28 @@
                            class="mt-4"
                           />
                            </v-col>
+                           <v-col cols="12" sm="6">
+                            <v-text-field
+                            v-model="specialite"
+                            label="specialite"
+                            outlined
+                            dense
+                            color="blue"
+                            autocomplete="false"
+                           class="mt-4"
+                          />
+                           </v-col>
+                             <v-col cols="12" sm="6">
+                            <v-text-field
+                            v-model="age"
+                            label="age"
+                            outlined
+                            dense
+                            color="blue"
+                            autocomplete="false"
+                           class="mt-4"
+                          />
+                           </v-col>
                             <v-col cols="12" sm="6">
                               <v-textarea
                               v-model="subtext"
@@ -106,26 +128,16 @@
                             label="Label"
                           ></v-textarea>
                            </v-col>
-                            <v-col cols="12" sm="6">
-                            <v-text-field
-                            v-model="catégorie"
-                            label="catégorie"
-                            outlined
-                            dense
-                            color="blue"
-                            autocomplete="false"
-                           class="mt-4"
-                          />
-                           </v-col>
+                            
                            
                              
                        
                            </v-row>
                             <v-file-input
-                    accept="video/*"
+                    accept="image/*"
                     label="File input"
                     ref="files"
-                    v-model="video"
+                    v-model="photo"
                   ></v-file-input>
                           
                      
@@ -134,7 +146,7 @@
                                <p v-for="(image,index) in images" :key="index">{{image.name}}</p>
                                </div>  --> 
                            
-                          <v-btn color="blue" dark block tile type="submit"  @click="saveExercice"> Ajouter</v-btn>
+                          <v-btn color="blue" dark block tile type="submit"  @click="saveCoach"> Ajouter</v-btn>
                  
                           </v-col>
                         </v-row>  
@@ -157,6 +169,150 @@
                        </v-toolbar>
                        </v-col>
                        </v-row>
+                            <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">id</th>
+            <th scope="col">name</th>
+            <th scope="col">text</th>
+            <th scope="col">specialite</th>
+            <th scope="col">age</th>
+                <th scope="col">subtext</th>
+                 <th scope="col">photo</th>
+            <th> Action</th>
+           
+          </tr>
+        </thead>
+        <tbody >
+          <tr v-for="coach in coaches" :key="coach.id">
+              <td>{{coach.id}}</td>
+            <td>{{coach.name}}</td>
+            <td>{{coach.text}}</td>
+            <td>{{coach.specialite}}</td>
+             <td>{{coach.age}}</td>
+              <td>{{coach.subtext}}</td>
+              <v-img>{{coach.photo}}</v-img>
+             <td>
+               <v-btn type="button" @click="deleteCoach(coach.id) " color="error"> delete</v-btn> 
+               
+              
+                  <v-container >
+                
+       
+      
+      <v-dialog
+        transition="dialog-bottom-transition"
+        style="margin-top:-350px"
+     
+      >
+        <template v-slot:activator="{ props }">
+          <v-btn
+            color="primary"
+            v-bind="props"
+            @click="updateCoach(coach.id)"
+          >Update</v-btn>
+        </template>
+        <template v-slot:default="{ isActive }">
+          <v-card>
+            <v-toolbar
+               style=" background: linear-gradient(87deg,#2dce89,#2dcecc)!important;"
+            >Update Coach</v-toolbar>
+            <v-form
+           
+             style="width:1500px"
+            ref="form"
+            
+            lazy-validation
+          >
+    <v-row >
+                          <v-col cols="12" sm="7">
+                           <v-row>
+                           <v-col cols="12" sm="4">
+                            <v-text-field
+                            v-model="editname"
+                            label="nom"
+                            outlined
+                            dense
+                            color="blue"
+                            autocomplete="false"
+                           class="mt-4"
+                          />
+                           </v-col>
+                           <v-col cols="12" sm="4">
+                            <v-text-field
+                            v-model="edittext"
+                            label="text"
+                            outlined
+                            dense
+                            color="blue"
+                            autocomplete="false"
+                           class="mt-4"
+                          />
+                           </v-col>
+                             <v-col cols="12" sm="4">
+                            <v-text-field
+                            v-model="editspecilaite"
+                            label="text"
+                            outlined
+                            dense
+                            color="blue"
+                            autocomplete="false"
+                           class="mt-4"
+                          />
+                           </v-col>
+                             <v-col cols="12" sm="4">
+                            <v-text-field
+                            v-model="editage"
+                            label="text"
+                            outlined
+                            dense
+                            color="blue"
+                            autocomplete="false"
+                           class="mt-4"
+                          />
+                           </v-col>
+                            <v-col cols="12" sm="12">
+                              <v-textarea
+                              v-model="editsubtext"
+                            background-color="grey lighten-2"
+                            color="cyan"
+                            label="subtext"
+                          ></v-textarea>
+                           </v-col>
+                                    <v-file-input
+                    accept="image/*"
+                    label="File input"
+                    ref="files"
+                    v-model="editphoto"
+                  ></v-file-input>
+                       
+                           </v-row> 
+                          <v-btn color="black" dark tile  type="submit" @click="editCoach" > Update</v-btn>
+                 
+                          </v-col>
+                        </v-row> 
+  
+  </v-form>
+            <v-card-actions class="justify-end">
+              <v-btn
+              color="blue" dark block tile
+                text
+                @click="isActive.value = false"
+              >Close</v-btn>
+            </v-card-actions>
+          </v-card>
+        </template>
+      </v-dialog>
+    
+   
+               </v-container>
+               
+             </td>
+             
+          </tr> 
+              
+        </tbody>
+        </table>
                        
                        </v-card>
         </v-col>
@@ -164,16 +320,124 @@
 </template>
 <script>
 import SideBar from '@/components/SideBar.vue'
+import axios from 'axios';
 
 export default {
   components: { SideBar },
     data() {
         return{
            dialog:false,
+           coaches:{},
+           id:"",
+           name:"",
+           text:"",
+           specialite:"",
+           age:"",
+           subtext:"",
+           photo:"",
+           editname:"",
+           edittext:"",
+           editspecialite:"",
+           editage:"",
+           editsubtext:"",
+           ediyphoto:"",
           
 
         } 
     },
+        created(){
+      this.getCoach();
+    },
+    methods:{
+         saveCoach(){
+      
+           axios.post('http://localhost:8000/api/auth/SaveCoach' ,{
+               name : this.name,
+               text: this.text,
+               specialite: this.specialite,
+               age:this.age,
+               subtext:this.subtext,
+               photo : this.photo,
+                
+
+             } ).then(response => {
+               console.log(response);
+              
+               if(response.status == 200){
+                    alert('success'),
+                    this.getCoach()
+               }else{
+                 alert('error')
+               }
+          });
+        },
+
+              getCoach(){
+       axios.get('http://localhost:8000/api/auth/getCoach')
+        .then (res => {
+         console.log(res.data);
+         this.coaches = res.data;
+       }).catch(
+         error =>{
+           console.log(error);
+         } 
+         
+       )
+     },
+    
+
+         deleteCoach(id){
+        axios.delete('http://localhost:8000/api/auth/deleteCoach/'+ id)
+        .then(response => {
+               console.log(response);
+              
+               if(response.status == 200){
+                  this.getCoach();
+                      this.$swal('deleted succefuly');
+                   
+               }else{
+                 alert('error')
+               }
+          });
+     },
+      updateCoach(id){
+           axios.get('http://localhost:8000/api/auth/updateCoach/'+ id)
+        .then(response => {
+               console.log(response);
+               this.id = response.data.id;
+               this.editname = response.data.name;
+               this.edittext = response.data.text;
+               this.editspecialite = response.data.specialite;
+               this.editage = response.data.age;
+               this.editsubtext = response.data.subtext;
+               this.editphoto = response.data.photo
+     }); 
+    },
+       editCoach(){
+           axios.put('http://localhost:8000/api/auth/editCoach' ,{
+                id : this.id,
+               name : this.editname,
+               text: this.edittext,
+                specialite: this.editspecialite,
+               age: this.editage,
+               subtext: this.editsubtext,
+               photo : this.editphoto,
+                
+
+             })   .then(response => {
+               console.log(response);
+              
+               if(response.status == 200){
+                  
+                      alert('update succefuly')
+                      this.getCoach();
+                   
+               }else{
+                 alert('error')
+               }
+          });
+       },
+    }
    
 }
 </script>

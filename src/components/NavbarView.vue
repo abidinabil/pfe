@@ -25,12 +25,15 @@
                <li><router-link to="">Actualité</router-link></li>
                 <li><router-link to="NutritionnisteView">Nutritionniste</router-link></li>
                 <li><router-link to="CoachView1">Coach</router-link></li>
+                 <li><router-link to="GymView">Gym</router-link></li>
       </v-list>
     </v-menu>
       </li>
        <li><router-link to="">Boutique</router-link></li>
-      <li>  <v-btn to="/SignIn">Se Connecter</v-btn></li>
-       <li>  <v-btn to="/SignUp">Commencer dés maintenant</v-btn></li>  
+          <li v-if="loggedIn"><router-link to="ProfileView">Profile</router-link></li>
+      <li>  <v-btn v-if="!loggedIn" to="/SignIn">Se Connecter</v-btn></li>
+       <li>  <v-btn v-if="!loggedIn" to="/SignUp">Commencer dés maintenant</v-btn></li>  
+             <li v-if="loggedIn">  <v-btn @click.prevent="performLogout" >Logout</v-btn></li> 
     </ul>
   </nav>
 </template>
@@ -141,3 +144,37 @@ input[type="checkbox"]{
 
 
 </style>
+
+<script>
+export default {
+  data() {
+    return{
+      token:null
+    }
+    
+  },
+  mounted(){
+    this.chekUserStatus();
+  },
+
+
+  methods: {
+    chekUserStatus(){
+      if(localStorage.getItem('token') != null){
+        this.token = localStorage.getItem('token')
+      }
+    },
+    performLogout(){
+      localStorage.removeItem('token')
+       localStorage.removeItem('user')
+       this.token = null
+       this.$router.push('/exampleView')
+    }
+  },
+    computed: {
+    loggedIn() {
+      return this.$store.getters.get_loggedIn;
+    }
+  },
+}
+</script>

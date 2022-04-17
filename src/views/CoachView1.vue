@@ -69,28 +69,32 @@
     </v-container> <br><br><br>
 
     <div class="reviews"><br><br><br>
-          
-           <v-card  class="coach  mx-auto"  max-width="344"  variant="outlined" > <br><br>
+          <v-row>
+              <v-col cols="12" md="4" lg="4" v-for="coach in coaches" :key="coach.id">
+                   <v-card  class="coach  mx-auto"  max-width="344" style="height:480px" variant="outlined" > <br><br>
             <div class="text-center">
                   <v-avatar  size="x-large">  
                 <v-img  src="https://cdn.vuetifyjs.com/images/john.jpg" ></v-img>
                
                 </v-avatar>
-                 <p>Abidi Nabil</p>
-                  <span  style="color:#61CE70 ">Coach de Fitness </span>
+                 <p>{{coach.name}}</p>
+                  <span  style="color:#61CE70 ">{{coach.specialite}} </span>
                   <br><br>
                   <v-icon>mdi-facebook</v-icon> <v-icon>mdi-twitter</v-icon> <v-icon>mdi-youtube</v-icon><v-icon>mdi-cellphone</v-icon> <br><br>
                       <v-btn
                     variant="outlined"
-                    color="primary"
+                    color="#61CE70"
                     >
                    Contact me
                     </v-btn>
-                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta dolor repudiansequatur <br>, aperiam fuga asperiores veniam velit corrupti aspernatur dolorum nemo quidem illo. <br> Sunt, tenetur? Quae?</p>
+                 <p>{{coach.subtext}}</p>
          
             </div>
              
             </v-card>
+              </v-col>
+          </v-row>
+          
     </div><br><br><br>
 
     <v-container>
@@ -102,8 +106,31 @@
 </template>
 <script>
 import NavbarView from '@/components/NavbarView.vue'
+import axios from 'axios';
 export default {
+    data(){
+        return{
+             coaches:{}
+        }
+    },
   components: { NavbarView },
+       created(){
+      this.getCoach();
+    },
+  methods:{
+                getCoach(){
+       axios.get('http://localhost:8000/api/auth/getCoach')
+        .then (res => {
+         console.log(res.data);
+         this.coaches = res.data;
+       }).catch(
+         error =>{
+           console.log(error);
+         } 
+         
+       )
+     },
+  }
     
 }
 </script>

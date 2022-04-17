@@ -70,7 +70,10 @@ export default {
        return{
            email: "",
            password: "",
-           error: ""
+           error: "",
+           user:null,
+           token:null
+
        };
   },
        methods: {
@@ -86,11 +89,15 @@ export default {
                      localStorage.setItem("token", res.data.access_token);
                     localStorage.setItem("user", res.data.user) ;
                     if(res.data.user.role == 'admin'){
-                   this.$router.push("/exampleView");
+                   this.$router.push("/DashbordView");
                  
-                    } else{
-                        (res.data.user.role == 'user')
-                         this.$router.push("/TeamView")
+                    } else if   (res.data.user.role == 'user'){
+                      
+                         this.$router.push("/ProfileView")
+                    }
+                     else{
+                        (res.data.user.role == 'coach')
+                         this.$router.push("/NutritionView")
                     }
                    
                })

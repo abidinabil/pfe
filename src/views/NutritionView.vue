@@ -81,7 +81,7 @@
   
         <div class="mange" style="margin-top:-20px">
             <v-container>
-                   <h2 class="text-align:center" style="color:white">Welcome to FitBodt</h2>
+                   <h2 class="text-center" style="color:aliceblue">Je suis Ce que Je Mange</h2>
             </v-container>
             
         </div>
@@ -165,7 +165,7 @@ export default {
     padding: 2rem 9%;
     display: flex;
     align-items: center;
-   background-image: url("https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940");
+   background-image: url("https://images.pexels.com/photos/6740535/pexels-photo-6740535.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940");
   
 }
   .v-card {
