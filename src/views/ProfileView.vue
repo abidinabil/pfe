@@ -123,7 +123,7 @@
              </v-row><br><br>
              <div class="text-center">
                <h3>{{user.name}}</h3>
-               <p>Tunis,Siliana</p>
+               <p>{{user.email}}</p>
                <p>Coach de Fitness</p>
                <p>University of Computer Science</p>
                <v-divider></v-divider>
@@ -142,48 +142,31 @@
 
 <script>
 
-import NavbarView from '@/components/NavbarView.vue';
+import NavbarView from "@/components/NavbarView.vue";
 
 export default {
-    
-    data() {
-
-      return  {
-        user:{},
-         Statistics:[
-           {icon:'mdi-chart-areaspline',title:'Total User',color:'red'},
-            {icon:'mdi-chart-bar-stacked',title:'Total Coach',color:'green'},
-             {icon:'mdi-chart-bell-curve',title:'Total Product',text:''},
-              {icon:'mdi-chart-bell-curve',title:'Total Product',text:''}
-         ],
-             projects: [
-        { title: 'Project1', Person: 'Nabil' , date:'16/03/2022' , content:' complete'},
-        { title: 'Project2', Person: 'hamouda' ,  date:'16/03/2022' ,content:' enCours'},
-       { title: 'Project2', Person: 'Ayoub' ,  date:'16/03/2022' ,content:' finit '},
-       { title: 'Project2', Person: 'Ayoub' ,  date:'16/03/2022' ,content:'  complete'},
-          { title: 'Project4', Person: 'farah' ,  date:'16/03/2022' ,content:'  complete'},
-
-      ],
-      }
-    },
-    components: { NavbarView },
-   
-      mounted(){
-    this.chekUserStatus();
-    
-  },
-
-  methods: {
-    chekUserStatus(){
-    
-        this.user = localStorage.getItem('user')
-        console.log(this.user)
-        console.log(this.user.name)
+  components: { NavbarView },
+  data() {
+    return {
+      image: null,
       
-
+      name: "",
+      email: "",
+      password: "",
+      users: {},
+     
+      }
+  },
+  
+  computed: {
+    user() {
+      return this.$store.getters.get_user;
     },
   },
- 
-}
+
+
+
+};
 </script>
+
         

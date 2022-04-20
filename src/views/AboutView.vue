@@ -72,7 +72,7 @@
   <v-container>
     <v-row>
       <v-col cols="12" xs="12" sm="6" md="6" lg="6">
-         <v-img rounded src="./../assets/fitness.jpg"  ></v-img>
+        
       </v-col>
       <v-col cols="12" xs="20" sm="6" md="6" lg="6" >
        <h4 > It's not a diet, it's a Lifestyle </h4>

@@ -60,35 +60,32 @@
   </div>
 </template>
 <script>
-/*===== FOCUS =====*/
-import axios from 'axios'
-
 
 export default {
-  name:'SignIn',
-  data(){
-       return{
-           email: "",
-           password: "",
-           error: "",
-           user:null,
-           token:null
-
-       };
+  
+  name: "SignIn",
+  data() {
+    return {
+      valid: true,
+      email: "",
+      emailrules: [(v) => !!v || "Email is required"],
+      password: "",
+      error: "",
+      isLoading: false,
+    };
   },
-       methods: {
-           performLogin(){
-               axios.post('http://localhost:8000/api/auth/login', {
-                   email:this.email,
-                   password:this.password
-               })
-               .then(res => 
-               {
-                   console.log(res.data);
-                   
-                     localStorage.setItem("token", res.data.access_token);
-                    localStorage.setItem("user", res.data.user) ;
-                    if(res.data.user.role == 'admin'){
+  methods: {
+    performLogin() {
+     
+      this.$store
+        .dispatch("performLoginAction", {
+          email: this.email,
+          password: this.password,
+        })
+        .then((res) => {
+          console.log(res);
+        
+        if(res.data.user.role == 'admin'){
                    this.$router.push("/DashbordView");
                  
                     } else if   (res.data.user.role == 'user'){
@@ -101,15 +98,14 @@ export default {
                     }
                    
                })
-               .catch (error => {
-                   console.log(error.message)
-                   this.error= error.message
-               })
-               console.log("performLogin")
-           }
-       },
-  }
- 
+        .catch((err) => {
+          this.isLoading = false;
+          this.error = " Password or email incorrect";
+          console.log(err.message);
+        });
+    },
+  },
+};
 </script>
 <style>
 /*===== GOOGLE FONTS =====*/

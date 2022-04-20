@@ -63,7 +63,7 @@
             <v-card class="elevation-6 mt-10"  >
              <v-window v-model="step">
                 <v-window-item :value="1">
-                       
+                   <form action="" @submit.prevent="SaveNutritionniste">        
                <v-row >
                    
 
@@ -118,26 +118,17 @@
                            </v-col>
                        
                            </v-row>
-                            <v-file-input
-                            accept="image/*"
-                            label="File input"
-                            ref="files"
-                            v-model="photo"
-                        ></v-file-input>
-                          
-                     
-
-                            <!-- <div class="m-auto">
-                               <p v-for="(image,index) in images" :key="index">{{image.name}}</p>
-                               </div>  --> 
-                           
-                          <v-btn color="blue" dark block tile type="submit"  @click="saveNutritionniste"> Ajouter</v-btn>
+                              <v-file-input
+                          accept="image/*" label="File input"    @change="onChange" ></v-file-input>
+    
+                       <input type="submit" value="Ajouter">
                  
                           </v-col>
                         </v-row>  
                       </v-card-text>
                     </v-col>
                   </v-row>
+                  </form>
                 </v-window-item>
                 <v-window-item :value="2">
                   
@@ -312,29 +303,40 @@ export default {
     methods:{
 
         //************************Save Nutritionniste ************************* */
-          saveNutritionniste(){
-     
-           axios.post('http://localhost:8000/api/auth/SaveNutritionniste' ,{
-               nom : this.nom,
-               text: this.text,
-               subtext: this.subtext,
-               adresse : this.adresse,
-               photo:this.photo,
-                
-
-             } ).then(response => {
-               console.log(response);
-              
-               if(response.status == 200){
-                    alert('success')
-                    this.getNutritionniste();
+         onChange(e){
+           console.log("selected file", e.target.files[0])
+           this.photo = e.target.files[0]; 
+         },
+         SaveNutritionniste(){
+           let fd = new FormData();
+           
+         
+           console.log(FormData)
             
-                   
+           fd.append('photo', this.photo);
+              fd.append('nom', this.nom);
+                 fd.append('adresse', this.adresse);
+            fd.append('text', this.text);
+               fd.append('subtext', this.subtext);
+             
+           
+      
+           axios.post("http://localhost:8000/api/auth/SaveNutritionniste" ,fd , { 
+           
+           })
+          
+           .then(res=>{
+             console.log("Response" , res.data);
+               if(res.status == 200){
+                    alert('success');
+                    this.getNutritionniste()
+                    
                }else{
                  alert('error')
                }
-          });
-        },
+             
+           })
+         },
          //************************Fin Save Nutritionniste ************************* */
 
          //******************************Get Nutritionniste*************************** */

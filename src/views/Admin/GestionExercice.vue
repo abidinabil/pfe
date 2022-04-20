@@ -63,7 +63,7 @@
             <v-card class="elevation-6 mt-10"  >
              <v-window v-model="step">
                 <v-window-item :value="1">
-                       
+                   <form action="" @submit.prevent="SaveExercice">  
                <v-row >
                    
 
@@ -121,26 +121,17 @@
                              
                        
                            </v-row>
-                            <v-file-input
-                    accept="video/*"
-                    label="File input"
-                    ref="files"
-                    v-model="video"
-                  ></v-file-input>
-                          
-                     
-
-                            <!-- <div class="m-auto">
-                               <p v-for="(image,index) in images" :key="index">{{image.name}}</p>
-                               </div>  --> 
-                           
-                          <v-btn color="blue" dark block tile type="submit"  @click="saveExercice"> Ajouter</v-btn>
+                               <v-file-input
+                          accept="video/*" label="File input"    @change="onChange" ></v-file-input>
+    
+                            <input type="submit" value="Ajouter">
                  
                           </v-col>
                         </v-row>  
                       </v-card-text>
                     </v-col>
                   </v-row>
+                  </form>  
                 </v-window-item>
                 <v-window-item :value="2">
                   
@@ -181,29 +172,36 @@ export default {
     },
     methods:{
        //************************Save Nutritionniste ************************* */
-          saveExercice(){
-     
-           axios.post('http://localhost:8000/api/auth/SaveExercice' ,{
-               title : this.title,
-               text: this.text,
-               subtext: this.subtext,
-               catégorie : this.catégorie,
-               video:this.video,
-                
-
-             } ).then(response => {
-               console.log(response);
-              
-               if(response.status == 200){
-                    alert('success')
-                   
-            
-                   
+                onChange(e){
+           console.log("selected file", e.target.files[0])
+           this.video = e.target.files[0]; 
+         },
+         SaveExercice(){
+           let fd = new FormData();
+           console.log(FormData)
+           fd.append('video', this.video);
+              fd.append('title', this.title);
+                 fd.append('catégorie', this.catégorie);
+            fd.append('text', this.text);  
+               fd.append('subtext', this.subtext);
+           
+      
+           axios.post("http://localhost:8000/api/auth/SaveExercice" ,fd , { 
+           
+           })
+          
+           .then(res=>{
+             console.log("Response" , res.data);
+               if(res.status == 200){
+                    alert('success');
+                    
+                    
                }else{
                  alert('error')
                }
-          });
-        },
+             
+           })
+         },
          //************************Fin Save Nutritionniste ************************* */
     }
 }

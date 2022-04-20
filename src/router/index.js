@@ -28,6 +28,8 @@ import CoachView1 from '@/views/CoachView1.vue'
 import ProfileView from '@/views/ProfileView.vue'
 import GymView from '@/views/GymView.vue'
 import store from '@/store'
+import CreateWorkout from '../views/CreateWorkout.vue'
+
 
 
 
@@ -200,6 +202,12 @@ const routes = [
     path: '/GymView',
     name: 'GymView',
     component:GymView,
+
+  },
+  {
+    path: '/CreateWorkout',
+    name: 'CreateWorkout',
+    component:CreateWorkout,
 
   }
 

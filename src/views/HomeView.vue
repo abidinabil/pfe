@@ -140,7 +140,13 @@
   </v-row>
   </v-container>
   <br>
-  <br><br><br><br>
+ 
+  <form action="" @submit.prevent="submit">
+      <input type="text" v-model="name">
+    <input type="file" @change="onChange">
+    <input type="submit" value="upload">
+ 
+  </form>
  
 </template>
 
@@ -150,6 +156,11 @@ import { defineComponent } from 'vue';
 // Components
 
 import NavbarView from '@/components/NavbarView.vue';
+import axios from 'axios';
+
+
+
+
 export default defineComponent({
   name: 'HomeView',
   components:{
@@ -157,21 +168,73 @@ export default defineComponent({
   },
 
 data(){
-       return{ 
-          home: false,
-        notifications: false,
-        sound: true,
-        widgets: false,
-         projects: [
-        { title: 'Project1', Person: 'Nabil' , date:'16/03/2022' , content:' complete'},
-        { title: 'Project2', Person: 'Ayoub' ,  date:'16/03/2022' ,content:' enCours'},
-       { title: 'Project2', Person: 'Ayoub' ,  date:'16/03/2022' ,content:' finit '},
-       { title: 'Project2', Person: 'Ayoub' ,  date:'16/03/2022' ,content:'  complete'},
+  return{
+    image:null,
+    name:"",
+    
+  }
+},
+  methods: {
+        /* imageChange(){
+           for(let i =0 ; i<this.$refs.files.files.lenght ; i++){
+             this.images.push(this.$refs.files.files[i]);
+             console.log(this.images)
+           }
+         },
+         uploadImage(){
+           var self = this;
+           let formData = new FormData();
+           for(let i = 0 ; i< this.images.lenght;i++){
+             let file =self.images[i];
+             formData.append('files [' +i + ']' , file);
+           }
+          
+            console.log(formData)
+            axios.post('http://localhost:8000/api/auth/SaveImages',formData , {
+              text:this.text,
+            }).then(response =>{
+               
+              self.$refs.files.value='';
+              self.images =[];
+               console.log(response)
+            })
+            .catch(error => {
+              console.log(error)
+            })
+         } */
 
-      ],
+         onChange(e){
+           console.log("selected file", e.target.files[0])
+           this.image = e.target.files[0]; 
+         },
+         submit(){
+           let fd = new FormData();
+           
+         
+           console.log(FormData)
+            console.log(this.name)
+           fd.append('images', this.image);
+            fd.append('name', this.name);
+           
       
-       }
-}
+           axios.post("http://localhost:8000/api/auth/SaveImages" ,fd , { 
+           
+           })
+          
+           .then(res=>{
+             console.log("Response" , res.data);
+               if(res.status == 200){
+                    alert('success');
+                    
+               }else{
+                 alert('error')
+               }
+             
+           })
+         },
+         
+       },
+
 });
 </script>
 

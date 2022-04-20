@@ -31,6 +31,7 @@
       </li>
        <li><router-link to="">Boutique</router-link></li>
           <li v-if="loggedIn"><router-link to="ProfileView">Profile</router-link></li>
+              <li v-if="loggedIn"><router-link to="CreateWorkout">Create Workout</router-link></li>
       <li>  <v-btn v-if="!loggedIn" to="/SignIn">Se Connecter</v-btn></li>
        <li>  <v-btn v-if="!loggedIn" to="/SignUp">Commencer dés maintenant</v-btn></li>  
              <li v-if="loggedIn">  <v-btn @click.prevent="performLogout" >Logout</v-btn></li> 
@@ -164,12 +165,17 @@ export default {
         this.token = localStorage.getItem('token')
       }
     },
-    performLogout(){
-      localStorage.removeItem('token')
-       localStorage.removeItem('user')
-       this.token = null
-       this.$router.push('/exampleView')
-    }
+   performLogout() {
+      this.$store
+        .dispatch("performLogoutAction")
+        .then((res) => {
+          console.log(res);
+          this.$router.push("/exampleView");
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    },
   },
     computed: {
     loggedIn() {

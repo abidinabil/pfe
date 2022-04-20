@@ -88,45 +88,47 @@
 </template>
 
 <script>
-import axios from 'axios'
 
 export default {
+  
+  name: "SignIn",
   data() {
-    return{
-      name :"",
-      email :"",
-      password:"",
-      role:"user",
-      user:null
-     
-    }
+    return {
+      name: "",
+      email: "",
+      password: "",
+      role: "user",
+      error: "",
+      isLoading: false,
+    };
   },
-  methods:{
-         performRegister(){
-               axios.post('http://localhost:8000/api/auth/register', {
-                   name:this.name,
-                   email:this.email,
-                   password:this.password,
-                   role:this.role,
-               })
-               .then(res => 
-               {
-                   console.log(res.data);
-                   
-                     localStorage.setItem("token", res.data.access_token);
-                    localStorage.setItem("user", res.data.user) ;
-                     this.$router.push('/NutritionView')
-                   
-               })
-               .catch (error => {
-                   console.log(error.message)
-                   this.error= error.message
-               })
-               console.log("performLogin")
-           }
-  }
-}
+  methods: {
+    performRegister() {
+      this.isLoading = true;
+      this.$store
+        .dispatch("performRegisterUser", {
+          name: this.name,
+          email: this.email,
+          password: this.password,
+          role: this.role,
+        })
+        .then((res) => {
+          console.log(res);
+          this.isLoading = false;
+
+          this.$router.push("/ProfileView");
+        })
+        .catch((err) => {
+          this.isLoading = false;
+          this.error = " Registration faild";
+          console.log(err.message);
+        });
+    },
+  },
+};
 </script>
+Écrire à HamouDa Méjri
+
 <style>
 .si{
     height:150vh;

@@ -52,7 +52,7 @@ const store = createStore({
           });
       });
     },
-    performRegisterAction({ commit }, payload) {
+    performRegisterCoach({ commit }, payload) {
       return new Promise((resolve, reject) => {
         axios
           .post("http://localhost:8000/api/auth/register", {
@@ -72,7 +72,7 @@ const store = createStore({
           });
       });
     },
-    performRegisterActions({ commit }, payload) {
+    performRegisterUser({ commit }, payload) {
       return new Promise((resolve, reject) => {
         axios
           .post("http://localhost:8000/api/auth/register", {
@@ -113,43 +113,8 @@ const store = createStore({
           });
       });
     },
-    cvRegisterAction({ commit }, payload) {
-      return new Promise((resolve, reject) => {
-        axios
-          .post("http://localhost:8000/api/auth/registercv", {
-            name: payload.name,
-            email: payload.email,
-            poste: payload.poste,
-            localite: payload.localite,
-            id_user: payload.id_user,
-          })
-          .then((res) => {
-            commit("SET_cv", res.data.user);
-            resolve(res);
-          })
-          .catch((err) => {
-            reject(err);
-          });
-      });
-    },
-    updateUserProfileAction({ commit, state }, payload) {
-      return new Promise((resolve, reject) => {
-        axios
-          .patch("http://localhost:8000/api/auth/update", {
-            name: payload.name,
-            email: payload.email,
-            token: state.token,
-          })
-          .then((res) => {
-            commit("SET_user", res.data.user);
-
-            resolve(res);
-          })
-          .catch((err) => {
-            reject(err);
-          });
-      });
-    },
+    
+   
   },
   getters: {
     get_loggedIn(state) {

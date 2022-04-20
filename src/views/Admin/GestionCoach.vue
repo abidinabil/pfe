@@ -63,7 +63,7 @@
             <v-card class="elevation-6 mt-10"  >
              <v-window v-model="step">
                 <v-window-item :value="1">
-                       
+                  <form action="" @submit.prevent="SaveCoach">   
                <v-row >
                    
 
@@ -128,31 +128,19 @@
                             label="Label"
                           ></v-textarea>
                            </v-col>
-                            
-                           
-                             
-                       
+      
                            </v-row>
-                            <v-file-input
-                    accept="image/*"
-                    label="File input"
-                    ref="files"
-                    v-model="photo"
-                  ></v-file-input>
-                          
-                     
-
-                            <!-- <div class="m-auto">
-                               <p v-for="(image,index) in images" :key="index">{{image.name}}</p>
-                               </div>  --> 
-                           
-                          <v-btn color="blue" dark block tile type="submit"  @click="saveCoach"> Ajouter</v-btn>
+                           <v-file-input
+                          accept="image/*" label="File input"    @change="onChange" ></v-file-input>
+    
+                       <input type="submit" value="Ajouter">
                  
                           </v-col>
                         </v-row>  
                       </v-card-text>
                     </v-col>
                   </v-row>
+                  </form>  
                 </v-window-item>
                 <v-window-item :value="2">
                   
@@ -191,7 +179,7 @@
             <td>{{coach.specialite}}</td>
              <td>{{coach.age}}</td>
               <td>{{coach.subtext}}</td>
-              <v-img>{{coach.photo}}</v-img>
+              <img :src="'./assets/Coaches/'+coach.photo" :alt="coach.photo"><img>
              <td>
                <v-btn type="button" @click="deleteCoach(coach.id) " color="error"> delete</v-btn> 
                
@@ -283,7 +271,7 @@
                     accept="image/*"
                     label="File input"
                     ref="files"
-                    v-model="editphoto"
+                    @change="onChange"
                   ></v-file-input>
                        
                            </v-row> 
@@ -322,6 +310,7 @@
 import SideBar from '@/components/SideBar.vue'
 import axios from 'axios';
 
+
 export default {
   components: { SideBar },
     data() {
@@ -340,7 +329,7 @@ export default {
            editspecialite:"",
            editage:"",
            editsubtext:"",
-           ediyphoto:"",
+           editphoto:"",
           
 
         } 
@@ -349,28 +338,41 @@ export default {
       this.getCoach();
     },
     methods:{
-         saveCoach(){
-      
-           axios.post('http://localhost:8000/api/auth/SaveCoach' ,{
-               name : this.name,
-               text: this.text,
-               specialite: this.specialite,
-               age:this.age,
-               subtext:this.subtext,
-               photo : this.photo,
+           onChange(e){
+           console.log("selected file", e.target.files[0])
+           this.photo = e.target.files[0]; 
+         },
+         SaveCoach(){
+           let fd = new FormData();
+           
+         
+           console.log(FormData)
+            
+           fd.append('photo', this.photo);
+              fd.append('name', this.name);
+                 fd.append('age', this.age);
+            fd.append('text', this.text);
+               fd.append('specialite', this.specialite);
                 
-
-             } ).then(response => {
-               console.log(response);
-              
-               if(response.status == 200){
-                    alert('success'),
-                    this.getCoach()
+               fd.append('subtext', this.subtext);
+           
+      
+           axios.post("http://localhost:8000/api/auth/SaveCoach" ,fd , { 
+           
+           })
+          
+           .then(res=>{
+             console.log("Response" , res.data);
+               if(res.status == 200){
+                    alert('success');
+                    this.getCoach();
+                    
                }else{
                  alert('error')
                }
-          });
-        },
+             
+           })
+         },
 
               getCoach(){
        axios.get('http://localhost:8000/api/auth/getCoach')

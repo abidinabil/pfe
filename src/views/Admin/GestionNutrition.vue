@@ -66,7 +66,7 @@
             <v-card class="elevation-6 mt-10"  >
              <v-window v-model="step">
                 <v-window-item :value="1">
-                 <v-form>  
+                 <form action="" @submit.prevent="SaveNutrition">  
                <v-row >
                    
                  
@@ -93,16 +93,15 @@
                            </v-col>
                            </v-row>
                             <v-file-input
-                          accept="image/*" label="File input" ref="files"    v-model="image"
-                        ></v-file-input>     
-                          <v-btn color="blue" dark block tile type="submit"  @click="saveNutrition"> Ajouter</v-btn>
+                          accept="image/*" label="File input"    @change="onChange" ></v-file-input>     
+                           <input type="submit" value="Ajouter">
                           </v-col>
                         </v-row>  
                       </v-card-text>
                     </v-col>
                      
                   </v-row>
-                  </v-form>
+                  </form>
                 </v-window-item>
                 <v-window-item :value="2">
                   
@@ -291,15 +290,42 @@ export default {
       this.getNutrition();
     },
     methods:{
+        onChange(e){
+           console.log("selected file", e.target.files[0])
+           this.image = e.target.files[0]; 
+         },
+         SaveNutrition(){
+           let fd = new FormData();
+           
+         
+           console.log(FormData)
+            console.log(this.name)
+           fd.append('image', this.image);
+            fd.append('text', this.text);
+                 fd.append('title', this.title);
+                      fd.append('subtext', this.subtext);
+           
+      
+           axios.post("http://localhost:8000/api/auth/Nutrition" ,fd , { 
+           
+           })
+          
+           .then(res=>{
+             console.log("Response" , res.data);
+               if(res.status == 200){
+                    alert('success');
+                    this.getNutrition();
+                    
+               }else{
+                 alert('error')
+               }
+             
+           })
+         },
 
      
-        saveNutrition(){
-       /*     var self =this;
-         let formData = new FormData();
-         for(let i = 0; this.image.length ; i++){
-         let file = self.image[i];
-         formData.append('files[' + i+ ']',file)
-         } */
+     /*   saveNutrition(){
+    
            axios.post('http://localhost:8000/api/auth/Nutrition' ,{
                title : this.title,
                text: this.text,
@@ -318,10 +344,8 @@ export default {
                  alert('error')
                }
           });
-        },
-      /*  onFileChange(event){
-            this.image = event.target.files[0];
         }, */
+      
      
 
 
